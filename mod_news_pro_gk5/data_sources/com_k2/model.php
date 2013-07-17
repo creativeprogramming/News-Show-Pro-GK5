@@ -130,9 +130,9 @@ class NSP_GK5_com_k2_Model {
 		if($config['news_unauthorized'] == '0') {
 			$access_con = ' AND content.access IN ('. implode(',', $user->getAuthorisedViewLevels()) .') ';
 		}
-		$date = JFactory::getDate($config['time_offset'].' hour '.date('Y-m-d H:i:s', strtotime('now')));
+		$date = JFactory::getDate($config['time_offset'].' hour '. JFactory::getDate());
 		//$date = JFactory::getDate("now", $config['time_offset']);
-		$now  = $date->toSql(true);
+		$now  = $date->toSql(false);
 		$nullDate = $db->getNullDate();
 		// if some data are available
 		// when showing only frontpage articles is disabled
